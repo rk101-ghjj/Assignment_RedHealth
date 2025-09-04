@@ -5,12 +5,7 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* Removed @theme block to avoid Unknown at rule error when Tailwind processing isn't applied */
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -22,5 +17,14 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Removed Tailwind @apply helpers to avoid CSS at-rule errors in environments
+   where Tailwind's postcss plugin isn't processing this file. */
+
+textarea::placeholder,
+input::placeholder {
+  color: #9aa4b2;
+  opacity: 1;
 }
